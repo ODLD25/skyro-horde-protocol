@@ -15,4 +15,4 @@
   Can edit data of anything without touching any code.
 
   **Status**
-    Awaiting approval
+    Approved
