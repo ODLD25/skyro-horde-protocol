@@ -170,5 +170,13 @@ namespace Gameplay
                 rb.AddForce(Vector3.forward * inputActions.Player.Move.ReadValue<Vector2>().y * moveForce + Vector3.right * inputActions.Player.Move.ReadValue<Vector2>().x * moveForce, ForceMode.Force);
             }
         }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
