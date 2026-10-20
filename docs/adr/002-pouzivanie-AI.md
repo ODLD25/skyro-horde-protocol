@@ -10,4 +10,4 @@
   AI can be used to create tools for game designers. AI can not be used to create new mechanics or change already existing ones.
 
   **Status**
-    Awaiting approval
+    Approved
