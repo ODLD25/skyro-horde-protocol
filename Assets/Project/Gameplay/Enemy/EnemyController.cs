@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ammo"))
         {
-            Destroy(gameObject);
+            GetComponent<ObjectPooler>().Deactivate();
         }
     }
 }

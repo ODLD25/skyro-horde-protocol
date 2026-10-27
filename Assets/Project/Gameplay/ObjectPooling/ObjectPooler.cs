@@ -13,9 +13,13 @@ public class ObjectPooler : MonoBehaviour
         hasBeenInitialized = true;
     }
 
-    private void Deactivate()
+    public void Deactivate()
     {
-        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        if (GetComponent<Rigidbody>())
+        {
+            GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        }
+    
         objectPool.AddObject(gameObject);
     }
 
