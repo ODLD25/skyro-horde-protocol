@@ -5,7 +5,7 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField]private float fireRate;
     [SerializeField]private float shootForce;
-    [SerializeField]private GameObject ammoPrefab;
+    [SerializeField]private ObjectPool ammoPool;
 
     [Header("References")]
     [SerializeField]private Transform shootPoint;
@@ -35,7 +35,8 @@ public class WeaponController : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject spawnedAmmo = Instantiate(ammoPrefab, shootPoint.position, Quaternion.identity);
+        GameObject spawnedAmmo = ammoPool.GetObject();
+        spawnedAmmo.transform.position = shootPoint.position;
         spawnedAmmo.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
     }
 }

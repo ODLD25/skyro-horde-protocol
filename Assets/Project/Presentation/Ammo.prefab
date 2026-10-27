@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5876166236446566075}
   - component: {fileID: 2672377577607563087}
   - component: {fileID: 1787830633903009339}
+  - component: {fileID: -334153731569265294}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Ammo
@@ -140,3 +141,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-334153731569265294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923286928830284501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c99b6ea19265945a6ebfa7f9f8eac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::AmmoScript
+  timeToDeactivate: 5
