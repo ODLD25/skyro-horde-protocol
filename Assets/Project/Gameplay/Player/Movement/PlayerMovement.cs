@@ -21,14 +21,10 @@ namespace Gameplay
 
         [Header("References")]
         [SerializeField]private Rigidbody rb;
-        [SerializeField]private Horde inputActions;
         private Transform cam;
 
         void Awake()
         {
-            inputActions = new Horde();
-            inputActions.Player.Enable();
-
             cam = Camera.main.transform;
 
             moveSpeed = walkSpeed;
@@ -37,13 +33,12 @@ namespace Gameplay
         void Update()
         {
             speed = GetMovementSpeed();
-            Rotate();
+            //Rotate();
             SpeedControl();
         }
 
         void FixedUpdate()
         {
-            Move();
             cam.position = new Vector3(transform.position.x, cam.position.y, transform.position.z) + camOffset;
         }
 
@@ -145,7 +140,7 @@ namespace Gameplay
             
         }
 
-        private void Move()
+        /*private void Move()
         {
             Vector2 inputVector = inputActions.Player.Move.ReadValue<Vector2>();
 
@@ -169,13 +164,14 @@ namespace Gameplay
             {
                 rb.AddForce(Vector3.forward * inputActions.Player.Move.ReadValue<Vector2>().y * moveForce + Vector3.right * inputActions.Player.Move.ReadValue<Vector2>().x * moveForce, ForceMode.Force);
             }
-        }
+        }*/
 
         void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
+                FindAnyObjectByType<RunState>().ChangeGameState(GameState.GameOver);
             }
         }
     }

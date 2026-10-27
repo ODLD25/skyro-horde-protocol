@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
@@ -13,18 +14,12 @@ public class WeaponController : MonoBehaviour
     private bool isShooting;
     private bool canShoot;
 
-    void Awake()
-    {
-        inputActions = new Horde();
-        inputActions.Player.Enable();
-    }
-
-    void Start()
+    /*void Start()
     {
         canShoot = true;
     }
 
-    void Update()
+    /*void Update()
     {
         if (inputActions.Player.Fire.ReadValue<float>() != 0) isShooting = true;
         else isShooting = false;
@@ -36,16 +31,11 @@ public class WeaponController : MonoBehaviour
 
             Invoke(nameof(ResetCanShoot), fireRate);
         }
-    }
+    }*/
 
-    private void Shoot()
+    public void Shoot()
     {
         GameObject spawnedAmmo = Instantiate(ammoPrefab, shootPoint.position, Quaternion.identity);
         spawnedAmmo.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
-    }
-    
-    private void ResetCanShoot()
-    {
-        canShoot = true;
     }
 }
