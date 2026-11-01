@@ -1,10 +1,11 @@
 using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField]private RunState runState;
+    [Inject]private RunState runState;
     [SerializeField]private Rigidbody playerRb;
     private Horde inputActions;
 

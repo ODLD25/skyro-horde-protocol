@@ -5,13 +5,9 @@ public class RunState : MonoBehaviour
 {
     public GameState gameState {get; private set;}
 
-    public static RunState instance;
-
     void Awake()
     {
         gameState = GameState.Run;
-    
-        instance = this;
     }
 
     public void ChangeGameState(GameState newGameState)

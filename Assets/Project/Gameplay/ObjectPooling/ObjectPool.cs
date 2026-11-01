@@ -9,7 +9,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField, ReadOnly]private int poolSize;
     private Queue<GameObject> objectPool = new Queue<GameObject>();
 
-    void Start()
+    void Awake()
     {
         SpawnObjects(startingAmount);
     }

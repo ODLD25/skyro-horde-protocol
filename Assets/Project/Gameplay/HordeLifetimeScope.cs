@@ -1,16 +1,16 @@
-using UnityEngine;
+using Gameplay;
+using VContainer;
+using VContainer.Unity;
 
-public class HordeLifetimeScope : MonoBehaviour
+public sealed class HordeLifetimeScope : LifetimeScope
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Configure(IContainerBuilder builder)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        builder.RegisterComponentInHierarchy<RunState>();
+        builder.RegisterComponentInHierarchy<EnemySpawner>();
+        builder.RegisterComponentInHierarchy<InputManager>();
+        builder.RegisterComponentInHierarchy<PlayerMovement>();
+        builder.RegisterComponentInHierarchy<EnemyObjectPool>();
+        builder.RegisterComponentInHierarchy<AmmoObjectPool>();
     }
 }

@@ -5,7 +5,7 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField]private float fireRate;
     [SerializeField]private float shootForce;
-    [SerializeField]private ObjectPool ammoPool;
+    [SerializeField]private AmmoObjectPool ammoPool;
 
     [Header("References")]
     [SerializeField]private Transform shootPoint;

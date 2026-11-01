@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 namespace Gameplay
 {
@@ -22,6 +23,7 @@ namespace Gameplay
         [Header("References")]
         [SerializeField]private Rigidbody rb;
         private Transform cam;
+        [Inject]private RunState runState;
 
         void Awake()
         {
@@ -171,7 +173,7 @@ namespace Gameplay
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
-                FindAnyObjectByType<RunState>().ChangeGameState(GameState.GameOver);
+                runState.ChangeGameState(GameState.GameOver);
             }
         }
     }
