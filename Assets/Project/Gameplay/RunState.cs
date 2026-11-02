@@ -1,9 +1,11 @@
+using System;
 using Gameplay;
 using UnityEngine;
 
 public class RunState : MonoBehaviour
 {
     public GameState gameState {get; private set;}
+    public Action<GameState> stateChanged;
 
     public static RunState instance;
 
@@ -17,6 +19,7 @@ public class RunState : MonoBehaviour
     public void ChangeGameState(GameState newGameState)
     {
         gameState = newGameState;
+        stateChanged?.Invoke(newGameState);
     }
 
     public void Submit(ICommand command)

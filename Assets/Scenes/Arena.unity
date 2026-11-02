@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 1051759251}
   - component: {fileID: 1051759250}
   m_Layer: 5
-  m_Name: State
+  m_Name: StateTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,6 +1186,7 @@ GameObject:
   - component: {fileID: 1827328071}
   - component: {fileID: 1827328070}
   - component: {fileID: 1827328069}
+  - component: {fileID: 1827328073}
   m_Layer: 5
   m_Name: GameStateCanvas
   m_TagString: Untagged
@@ -1277,6 +1278,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1827328073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827328068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a50ca1fbefa464a830df61dcdaccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Presentation::GameStateTextScript
+  runState: {fileID: 301715972}
+  stateText: {fileID: 1051759251}
 --- !u!114 &2051257613 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1035297390269669267, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
