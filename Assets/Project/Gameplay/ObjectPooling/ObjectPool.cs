@@ -6,12 +6,18 @@ public class ObjectPool : MonoBehaviour
 {
     [SerializeField]private GameObject prefab;
     [SerializeField]private int startingAmount;
-    [SerializeField, ReadOnly]private int poolSize;
+    [SerializeField]private bool keepItFilled;
+    private bool queueInitialzied;
+    private int poolSize;
     private Queue<GameObject> objectPool = new Queue<GameObject>();
 
     void Start()
     {
-        SpawnObjects(startingAmount);
+        if (!queueInitialzied)
+        {
+            SpawnObjects(startingAmount);
+            queueInitialzied = true;
+        }
     }
 
     private void SpawnObjects(int amount)
@@ -31,10 +37,16 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetObject()
     {
-        if (objectPool.Count <= 1)
+        if (objectPool.Count == 0 && !queueInitialzied)
+        {
+            SpawnObjects(startingAmount);
+            queueInitialzied = true;
+        }
+        if (objectPool.Count <= 1 && keepItFilled)
         {
             SpawnObjects(5);
         }
+        else if (objectPool.Count == 0) {Debug.LogWarning("Pool is empty even though something is trying to acces it."); return null;}
 
         GameObject objectToDequeue = objectPool.Dequeue();
         objectToDequeue.SetActive(true);
