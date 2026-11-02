@@ -11,8 +11,7 @@ public class ObjectPool : MonoBehaviour
     private int poolSize;
     private Queue<GameObject> objectPool = new Queue<GameObject>();
 
-    void Start()
-    {
+    private void Awake() {
         if (!queueInitialzied)
         {
             SpawnObjects(startingAmount);

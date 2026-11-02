@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField]private float fireRate;
     [SerializeField]private float shootForce;
-    [SerializeField]private ObjectPool ammoPool;
+    [Inject]private AmmoPool ammoPool;
 
     [Header("References")]
     [SerializeField]private Transform shootPoint;

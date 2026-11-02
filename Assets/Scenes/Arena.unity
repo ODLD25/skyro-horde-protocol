@@ -255,12 +255,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301715970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1212103785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &301715972
 MonoBehaviour:
@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136b0dfbd46509547a13d4fe4d98878e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::InputManager
-  runState: {fileID: 301715972}
   playerRb: {fileID: 1319278602}
 --- !u!1 &330585543
 GameObject:
@@ -455,7 +454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1449991244}
+  m_Father: {fileID: 1212103785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &344571767
 MonoBehaviour:
@@ -466,9 +465,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 344571765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168e06ef605f28f438763bf6e0c2a51b, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a33b78b353136469c640fafa80f78e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Gameplay::ObjectPool
+  m_EditorClassIdentifier: Gameplay::EnemyPool
   prefab: {fileID: 379431685336433287, guid: 1737fa02e977c9b4b872e0695f13a578, type: 3}
   startingAmount: 5
   keepItFilled: 0
@@ -660,7 +659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1449991244}
+  m_Father: {fileID: 1212103785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &673602000
 MonoBehaviour:
@@ -671,9 +670,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 673601998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168e06ef605f28f438763bf6e0c2a51b, type: 3}
+  m_Script: {fileID: 11500000, guid: ffd588e67c488f84b90e8a62b91f5b42, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Gameplay::ObjectPool
+  m_EditorClassIdentifier: Gameplay::AmmoPool
   prefab: {fileID: 2923286928830284501, guid: a525478122fd4194ca5da62f4d7f026b, type: 3}
   startingAmount: 20
   keepItFilled: 1
@@ -1051,7 +1050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd4b0303156f9747ae8ec0527be6a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::EnemySpawner
-  enemyPool: {fileID: 344571767}
   spawnPoints:
   - {fileID: 1680333086}
   - {fileID: 616289445}
@@ -1065,7 +1063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171625478}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1073,14 +1071,9 @@ Transform:
   - {fileID: 1680333086}
   - {fileID: 616289445}
   - {fileID: 730356684}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1212103785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1319278602 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3476264073707923359, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
-  m_PrefabInstance: {fileID: 4665706872782247972}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1449991243
+--- !u!1 &1212103784
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,21 +1081,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1449991244}
+  - component: {fileID: 1212103785}
+  - component: {fileID: 1212103786}
   m_Layer: 0
-  m_Name: Pools
+  m_Name: HordeLifeTimeScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1449991244
+--- !u!4 &1212103785
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449991243}
+  m_GameObject: {fileID: 1212103784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1111,8 +1105,44 @@ Transform:
   m_Children:
   - {fileID: 673601999}
   - {fileID: 344571766}
+  - {fileID: 1171625480}
+  - {fileID: 301715971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1212103786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212103784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678feffbbad231d4ca19ea605817e361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::HordeLifetimeScope
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  playerMovement: {fileID: 1658925346}
+  weaponController: {fileID: 2051257613}
+--- !u!54 &1319278602 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3476264073707923359, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
+  m_PrefabInstance: {fileID: 4665706872782247972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1658925346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2085716989158610061, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
+  m_PrefabInstance: {fileID: 4665706872782247972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ba0ef05a1fcb54882c41dc3549694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::Gameplay.PlayerMovement
 --- !u!1 &1680333085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1277,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2051257613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1035297390269669267, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
+  m_PrefabInstance: {fileID: 4665706872782247972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5523189ead34f42bc7ea7dabb8da8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::WeaponController
 --- !u!1001 &4665706872782247972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1258,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 1035297390269669267, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
       propertyPath: ammoPool
       value: 
-      objectReference: {fileID: 673602000}
+      objectReference: {fileID: 0}
     - target: {fileID: 3476264073707923359, guid: cf1cef1314c0a944ca5a1c3bdaacb666, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -1319,11 +1360,9 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 1212103785}
   - {fileID: 1123382155}
   - {fileID: 51821826}
   - {fileID: 4665706872782247972}
-  - {fileID: 1449991244}
-  - {fileID: 1171625480}
-  - {fileID: 301715971}
   - {fileID: 1827328072}
   - {fileID: 63297313}

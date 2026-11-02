@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]private ObjectPool enemyPool;
+    [Inject]private EnemyPool enemyPool;
     [SerializeField]private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField]private int amountToSpawn;
 
