@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 using VContainer;
 
 public class EnemySpawner : MonoBehaviour
@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private List<EnemyDefinition> enemyTypes = new List<EnemyDefinition>();
     [SerializeField]private float timeBetweenWaves;
     [SerializeField]private int startingWave;
+
+    public Action<int> newWave;
     private bool spawningPaused;
 
     private int curWave;
@@ -52,15 +54,15 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = enemyFactory.CreateEnemy(enemyTypes[Random.Range(0, enemyTypes.Count)]);
-            enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
+            GameObject enemy = enemyFactory.CreateEnemy(enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)]);
+            enemy.transform.position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         }
     }
 
     public void SpawnEnemy(int enemyIndex)
     {
         GameObject enemy = enemyFactory.CreateEnemy(enemyTypes[enemyIndex]);
-        enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
+        enemy.transform.position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         
         enemy.GetComponent<EnemyController>().health = enemyTypes[enemyIndex].health;
     }
@@ -82,5 +84,7 @@ public class EnemySpawner : MonoBehaviour
 
         playableDirector.playableAsset = waves[curWave].waveTimeline;
         playableDirector.Play();
+
+        newWave?.Invoke(curWave);
     }
 }
