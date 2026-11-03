@@ -15,6 +15,7 @@ public class ObjectPooler : MonoBehaviour
 
     public void Deactivate()
     {
+        CancelInvoke(nameof(Deactivate));
         if (GetComponent<Rigidbody>())
         {
             GetComponent<Rigidbody>().linearVelocity = Vector3.zero;

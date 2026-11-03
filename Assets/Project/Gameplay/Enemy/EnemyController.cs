@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]private float speed;
+    public float speed {private get; set;}
     public int health {private get; set;}
     private RunState runState;
     private Transform player;
@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ammo"))
         {
             DealDamage();
+            collision.gameObject.GetComponent<ObjectPooler>().Deactivate();
         }
     }
 }

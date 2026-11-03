@@ -16,6 +16,7 @@ public sealed class HordeLifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<AmmoPool>();
         builder.RegisterComponentInHierarchy<InputManager>();
         builder.RegisterComponentInHierarchy<EnemySpawner>();
+        builder.RegisterComponentInHierarchy<EnemyFactory>();
 
         builder.RegisterComponent(playerMovement);
         builder.RegisterComponent(weaponController);

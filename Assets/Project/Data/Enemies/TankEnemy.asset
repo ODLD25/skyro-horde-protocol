@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TankEnemy
   m_EditorClassIdentifier: Gameplay::EnemyDefinition
   health: 5
+  speed: 2

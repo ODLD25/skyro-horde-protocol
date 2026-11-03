@@ -6,7 +6,7 @@ using VContainer;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Inject]private EnemyPool enemyPool;
+    [Inject]private EnemyFactory enemyFactory;
     [Inject]private RunState runState;
     [SerializeField]private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField]private List<WaveDefinition> waves = new List<WaveDefinition>();
@@ -52,14 +52,14 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = enemyPool.GetObject();
+            GameObject enemy = enemyFactory.CreateEnemy(enemyTypes[Random.Range(0, enemyTypes.Count)]);
             enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         }
     }
 
     public void SpawnEnemy(int enemyIndex)
     {
-        GameObject enemy = enemyPool.GetObject();
+        GameObject enemy = enemyFactory.CreateEnemy(enemyTypes[enemyIndex]);
         enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         
         enemy.GetComponent<EnemyController>().health = enemyTypes[enemyIndex].health;
