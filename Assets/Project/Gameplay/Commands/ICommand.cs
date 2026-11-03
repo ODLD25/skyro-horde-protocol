@@ -52,10 +52,12 @@ public class PauseCommand : ICommand
         if (runState.gameState == GameState.Paused)
         {
             runState.ChangeGameState(GameState.Run);
+            Time.timeScale = 1;
         }
         else
         {
             runState.ChangeGameState(GameState.Paused);
+            Time.timeScale = 0;
         }
     }
 }

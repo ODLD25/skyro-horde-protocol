@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]private float speed;    
+    [SerializeField]private float speed;
+    public int health {private get; set;}
     private RunState runState;
     private Transform player;
 
@@ -15,17 +16,28 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (player && runState.gameState == GameState.Run)
+        if (player && runState.gameState != GameState.Paused)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
+    }
+
+    private void Deactivate()
+    {
+        GetComponent<ObjectPooler>().Deactivate();
+    }
+
+    public void DealDamage()
+    {
+        health--;
+        if (health <= 0) Deactivate();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ammo"))
         {
-            GetComponent<ObjectPooler>().Deactivate();
+            DealDamage();
         }
     }
 }

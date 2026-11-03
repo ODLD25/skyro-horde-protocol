@@ -1,15 +1,51 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using VContainer;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Inject]private EnemyPool enemyPool;
+    [Inject]private RunState runState;
     [SerializeField]private List<Transform> spawnPoints = new List<Transform>();
-    [SerializeField]private int amountToSpawn;
+    [SerializeField]private List<WaveDefinition> waves = new List<WaveDefinition>();
+    [SerializeField]private List<EnemyDefinition> enemyTypes = new List<EnemyDefinition>();
+    [SerializeField]private float timeBetweenWaves;
+    [SerializeField]private int startingWave;
+    private bool spawningPaused;
 
-    private void Start() {
-        SpawnEnemies(amountToSpawn);
+    private int curWave;
+    private PlayableDirector playableDirector;
+
+    void Awake()
+    {
+        playableDirector = GetComponent<PlayableDirector>();
+    }
+
+    private void Start()
+    {
+        runState.stateChanged += StateChanged;
+
+        curWave = startingWave - 1;
+        StartNextWave();
+    }
+
+    private void StateChanged(GameState gameState)
+    {
+        if (gameState == GameState.Paused || gameState == GameState.GameOver)
+        {
+            playableDirector.Pause();
+            spawningPaused = true;
+        }
+        else if (gameState == GameState.Run)
+        {
+            if (spawningPaused)
+            {
+                playableDirector.Play();
+                spawningPaused = false;
+            }
+        }
     }
 
     private void SpawnEnemies(int amount)
@@ -19,5 +55,32 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = enemyPool.GetObject();
             enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         }
+    }
+
+    public void SpawnEnemy(int enemyIndex)
+    {
+        GameObject enemy = enemyPool.GetObject();
+        enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
+        
+        enemy.GetComponent<EnemyController>().health = enemyTypes[enemyIndex].health;
+    }
+
+    public void EndWave()
+    {
+        Invoke(nameof(StartNextWave), timeBetweenWaves);
+    }
+
+    private void StartNextWave()
+    {
+        curWave++;
+        if (curWave >= waves.Count)
+        {
+            Debug.Log("Game Won");
+            runState.ChangeGameState(GameState.GameOver);
+            return;
+        }
+
+        playableDirector.playableAsset = waves[curWave].waveTimeline;
+        playableDirector.Play();
     }
 }

@@ -1031,6 +1031,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1171625480}
   - component: {fileID: 1171625479}
+  - component: {fileID: 1171625482}
+  - component: {fileID: 1171625481}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1054,7 +1056,14 @@ MonoBehaviour:
   - {fileID: 1680333086}
   - {fileID: 616289445}
   - {fileID: 730356684}
-  amountToSpawn: 5
+  waves:
+  - {fileID: 11400000, guid: e243496b1b6d86546945e9f0a3b0612c, type: 2}
+  - {fileID: 11400000, guid: ecc52ad39e7c5c84594397f9603b88c8, type: 2}
+  enemyTypes:
+  - {fileID: 11400000, guid: 6f6abb87f0af8a14091a6cb34a6b23ec, type: 2}
+  - {fileID: 11400000, guid: 8ebc415a37ec07b4db45481540e41cf4, type: 2}
+  timeBetweenWaves: 3
+  startingWave: 0
 --- !u!4 &1171625480
 Transform:
   m_ObjectHideFlags: 0
@@ -1073,6 +1082,83 @@ Transform:
   - {fileID: 730356684}
   m_Father: {fileID: 1212103785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1171625481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171625478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 0890d08c284467a4591209456fd280f3, type: 2}
+    - {fileID: 11400000, guid: eadb80ed5196b2d49a563d98df85cc0e, type: 2}
+    - {fileID: 11400000, guid: 882eebfd62f8a9b40984df8ec4b121e2, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171625479}
+          m_TargetAssemblyTypeName: EnemySpawner, Gameplay
+          m_MethodName: SpawnEnemy
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171625479}
+          m_TargetAssemblyTypeName: EnemySpawner, Gameplay
+          m_MethodName: EndWave
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1171625479}
+          m_TargetAssemblyTypeName: EnemySpawner, Gameplay
+          m_MethodName: SpawnEnemy
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &1171625482
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171625478}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 1235c0ea7cfb8c4479daf5b47279aaf6, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1212103784
 GameObject:
   m_ObjectHideFlags: 0

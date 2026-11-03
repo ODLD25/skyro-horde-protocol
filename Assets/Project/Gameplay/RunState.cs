@@ -27,14 +27,14 @@ public class RunState : MonoBehaviour
         switch (command)
         {
             case MoveCommand moveCommand:
-                if (gameState == GameState.Run)
+                if (gameState != GameState.Paused)
                 {
                     moveCommand.Run();
                 }
             break;
 
             case FireCommand fireCommand:
-                if (gameState == GameState.Run)
+                if (gameState != GameState.Paused)
                 {
                     fireCommand.Run();
                 }
@@ -54,7 +54,7 @@ public class RunState : MonoBehaviour
                 }
             break;
             case RotateCommand rotateCommand:
-                if (gameState == GameState.Run)
+                if (gameState != GameState.Paused)
                 {
                     rotateCommand.Run();
                 }
