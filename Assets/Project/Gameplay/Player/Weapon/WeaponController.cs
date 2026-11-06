@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using VContainer;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField]private float fireRate;
     [SerializeField]private float shootForce;
-    [SerializeField]private GameObject ammoPrefab;
+    [Inject]private AmmoPool ammoPool;
 
     [Header("References")]
     [SerializeField]private Transform shootPoint;
@@ -13,18 +15,12 @@ public class WeaponController : MonoBehaviour
     private bool isShooting;
     private bool canShoot;
 
-    void Awake()
-    {
-        inputActions = new Horde();
-        inputActions.Player.Enable();
-    }
-
-    void Start()
+    /*void Start()
     {
         canShoot = true;
     }
 
-    void Update()
+    /*void Update()
     {
         if (inputActions.Player.Fire.ReadValue<float>() != 0) isShooting = true;
         else isShooting = false;
@@ -36,16 +32,12 @@ public class WeaponController : MonoBehaviour
 
             Invoke(nameof(ResetCanShoot), fireRate);
         }
-    }
+    }*/
 
-    private void Shoot()
+    public void Shoot()
     {
-        GameObject spawnedAmmo = Instantiate(ammoPrefab, shootPoint.position, Quaternion.identity);
+        GameObject spawnedAmmo = ammoPool.GetObject();
+        spawnedAmmo.transform.position = shootPoint.position;
         spawnedAmmo.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
-    }
-    
-    private void ResetCanShoot()
-    {
-        canShoot = true;
     }
 }
