@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6985430130012785059}
   - component: {fileID: 676215792419271392}
   - component: {fileID: 6624069064103789944}
+  - component: {fileID: 5651397624225892683}
   m_Layer: 0
   m_Name: PF_Enemy
   m_TagString: Enemy
@@ -128,3 +129,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::EnemyController
   speed: 3.5
+--- !u!114 &5651397624225892683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379431685336433287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c99b6ea19265945a6ebfa7f9f8eac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::ObjectPooler
+  timeToDeactivate: 0
+  hasBeenInitialized: 0
