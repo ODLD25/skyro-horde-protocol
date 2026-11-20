@@ -1,0 +1,29 @@
+OVDF v1.1
+EnemyDefinition, Gameplay
+MetaGuid:1892d059da736824bb678c9478870a03
+
+# $Q8Wh7oxSzPusPZGNFcbBR6
+Position: $W1jfy9Fk8CvnMTe99jAupi:1
++ [Sirenix.OdinInspector.BoxGroupAttribute]
+	ShowLabel = True
+	GroupName = "Settings"
+
+# $W1jfy9Fk8CvnMTe99jAupi
+Position: $root:0
++ [Sirenix.OdinInspector.BoxGroupAttribute]
+
+# speed
+Position: $Q8Wh7oxSzPusPZGNFcbBR6:1
+
+# health
+Position: $Q8Wh7oxSzPusPZGNFcbBR6:0
+
+# enemyName
+Position: $W1jfy9Fk8CvnMTe99jAupi:0
++ [Sirenix.OdinInspector.TitleAttribute]
+	Title = "Enemy Name"
+	HorizontalLine = False
++ [Sirenix.OdinInspector.HideLabelAttribute]
++ [Sirenix.OdinInspector.PropertySpaceAttribute]
+	SpaceAfter = 8
+	SpaceBefore = 0

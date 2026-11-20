@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1892d059da736824bb678c9478870a03, type: 3}
   m_Name: TankEnemy
   m_EditorClassIdentifier: Gameplay::EnemyDefinition
+  enemyName: Tank Enemy
   health: 5
   speed: 2
